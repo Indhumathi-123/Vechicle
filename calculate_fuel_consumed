@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+typedef struct {
+    char name[20];
+    float speed;  // Speed in km/h
+    float mileage; // Mileage in km/l
+} Vehicle;
+
+float calculateDistance(Vehicle v, float fuel) {
+    return v.mileage * fuel; // Distance = Mileage * Fuel
+}
+
+int main() {
+    Vehicle vehicles[5] = {
+        {"Car", 150.0, 15.0},   // Speed in km/h and mileage in km/l
+        {"Motorcycle", 120.0, 40.0},
+        {"Truck", 80.0, 8.0},
+        {"Bus", 60.0, 5.0},
+        {"Bicycle", 25.0, 0.0}  // Mileage is 0 because bicycles don't consume fuel
+    };
+
+    float fuel;
+    printf("Enter the amount of fuel consumed (in liters): ");
+    scanf("%f", &fuel);
+
+    printf("\nDistance covered by each vehicle:\n");
+    for (int i = 0; i < 5; i++) {
+        float distance = calculateDistance(vehicles[i], fuel);
+        printf("%s: %.2f km\n", vehicles[i].name, distance);
+    }
+
+    return 0;
+}
